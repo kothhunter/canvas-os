@@ -376,7 +376,7 @@ ${transcript}`
 
   if (!course) {
     return (
-      <div className="p-10 text-slate-400">
+      <div className="p-10 text-slate-600 dark:text-slate-400">
         Course not found.{' '}
         <Link href="/courses" className="text-green-400 hover:underline">
           Back to Courses
@@ -390,7 +390,7 @@ ${transcript}`
       {/* Back nav */}
       <Link
         href="/courses"
-        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-300 transition-colors mb-6"
+        className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 transition-colors mb-6"
       >
         <ArrowLeft className="w-4 h-4" />
         All Courses
@@ -403,9 +403,9 @@ ${transcript}`
             <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-green-500/10 text-green-400 border border-green-500/20">
               {course.code}
             </span>
-            <h1 className="text-2xl font-bold text-slate-100 mt-3">{course.name}</h1>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-3">{course.name}</h1>
             {course.instructor && (
-              <p className="text-sm text-slate-400 mt-1">{course.instructor}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{course.instructor}</p>
             )}
             {course.term && <p className="text-xs text-slate-600 mt-0.5">{course.term}</p>}
           </div>
@@ -416,9 +416,9 @@ ${transcript}`
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Assignments — wider column */}
         <div className="lg:col-span-3">
-          <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10">
-            <div className="px-6 py-4 border-b border-white/5 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10">
+            <div className="px-6 py-4 border-b border-slate-200 dark:border-white/5 flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 Assignments ({filteredAndSorted.length})
               </h2>
@@ -428,7 +428,7 @@ ${transcript}`
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                  className="bg-slate-800/80 border border-white/10 rounded-md px-2 py-1 text-[11px] text-slate-400 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
+                  className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-md px-2 py-1 text-[11px] text-slate-600 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
                 >
                   {STATUS_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -437,7 +437,7 @@ ${transcript}`
                 <select
                   value={dueFilter}
                   onChange={(e) => setDueFilter(e.target.value as DueFilter)}
-                  className="bg-slate-800/80 border border-white/10 rounded-md px-2 py-1 text-[11px] text-slate-400 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
+                  className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-md px-2 py-1 text-[11px] text-slate-600 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
                 >
                   {DUE_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -455,7 +455,7 @@ ${transcript}`
             </div>
 
             {filteredAndSorted.length === 0 ? (
-              <div className="px-6 py-12 text-center text-slate-500">
+              <div className="px-6 py-12 text-center text-slate-500 dark:text-slate-500">
                 <Calendar className="w-6 h-6 mx-auto mb-2 opacity-40" />
                 <p className="text-sm">No assignments match your filters.</p>
               </div>
@@ -469,7 +469,7 @@ ${transcript}`
                     new Date(a.due_at).getTime() - Date.now() > 0;
 
                   return (
-                    <SpotlightCard key={a.id} className="px-5 py-4 border border-transparent hover:border-white/10 bg-transparent hover:bg-white/[0.02] transition-colors">
+                    <SpotlightCard key={a.id} className="px-5 py-4 border border-transparent hover:border-slate-200 dark:border-white/10 bg-transparent hover:bg-white/[0.02] transition-colors">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -479,9 +479,9 @@ ${transcript}`
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
                               </span>
                             )}
-                            <p className="text-sm font-medium text-slate-200 truncate">{a.name}</p>
+                            <p className="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">{a.name}</p>
                           </div>
-                          <p className={`text-xs mt-1 ${isUrgent ? 'text-rose-400/80 font-medium' : 'text-slate-500'}`}>
+                          <p className={`text-xs mt-1 ${isUrgent ? 'text-rose-400/80 font-medium' : 'text-slate-500 dark:text-slate-500'}`}>
                             {formatDueDate(a.due_at)}
                           </p>
                         </div>
@@ -497,7 +497,7 @@ ${transcript}`
                               href={a.html_url}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-slate-500 hover:text-green-400 transition-colors ml-1"
+                              className="text-slate-500 dark:text-slate-500 hover:text-green-400 transition-colors ml-1"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
                             </a>
@@ -518,9 +518,9 @@ ${transcript}`
         {/* Notes — narrower column */}
         <div className="lg:col-span-2 space-y-4">
           {/* Lecture Notes */}
-          <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10">
-            <div className="px-5 py-4 border-b border-white/5 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10">
+            <div className="px-5 py-4 border-b border-slate-200 dark:border-white/5 flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
                 <FileText className="w-4 h-4" />
                 Lecture Notes ({notes.length})
               </h2>
@@ -541,23 +541,23 @@ ${transcript}`
             ) : (
               <div className="divide-y divide-white/5">
                 {notes.map((note) => (
-                  <div key={note.id} className="px-5 py-3 hover:bg-white/5 transition-colors group">
+                  <div key={note.id} className="px-5 py-3 hover:bg-slate-100 dark:bg-white/5 transition-colors group">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm text-slate-300 truncate">{note.title}</p>
+                        <p className="text-sm text-slate-700 dark:text-slate-300 truncate">{note.title}</p>
                         <p className="text-[11px] text-slate-600 mt-0.5">{note.date}</p>
                       </div>
                       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                           onClick={() => handleViewNote(note)}
-                          className="p-1.5 text-slate-500 hover:text-green-400 transition-colors rounded"
+                          className="p-1.5 text-slate-500 dark:text-slate-500 hover:text-green-400 transition-colors rounded"
                           title="View note"
                         >
                           <FileText className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleDownloadNote(note)}
-                          className="p-1.5 text-slate-500 hover:text-green-400 transition-colors rounded"
+                          className="p-1.5 text-slate-500 dark:text-slate-500 hover:text-green-400 transition-colors rounded"
                           title="Download .md"
                         >
                           <Download className="w-3.5 h-3.5" />
@@ -571,17 +571,17 @@ ${transcript}`
           </div>
 
           {/* File Vault */}
-          <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2 mb-3">
+          <div className="bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10 p-5">
+            <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-3">
               <FolderOpen className="w-4 h-4" />
               File Vault
             </h2>
-            <p className="text-xs text-slate-500 mb-4">
+            <p className="text-xs text-slate-500 dark:text-slate-500 mb-4">
               Download files and pages from Canvas as a ZIP archive.
             </p>
             <button
               onClick={handleOpenResources}
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white transition-all duration-200 active:scale-[0.98]"
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:bg-white/10 hover:text-white transition-all duration-200 active:scale-[0.98]"
             >
               <Download className="w-4 h-4" />
               Sync Resources
@@ -593,27 +593,27 @@ ${transcript}`
       {/* Note Editor Modal */}
       {showEditor && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#0F172A] border border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-              <h3 className="text-lg font-semibold text-slate-50">New Lecture Note</h3>
+          <div className="bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">New Lecture Note</h3>
               <button
                 onClick={() => setShowEditor(false)}
-                className="text-slate-500 hover:text-slate-300 transition-colors"
+                className="text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex border-b border-white/10 px-6 pt-2">
+            <div className="flex border-b border-slate-200 dark:border-white/10 px-6 pt-2">
               <button
                 onClick={() => setEditorTab('paste')}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${editorTab === 'paste' ? 'border-green-500 text-green-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${editorTab === 'paste' ? 'border-green-500 text-green-600 dark:text-green-400' : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'}`}
               >
                 Markdown Editor
               </button>
               <button
                 onClick={() => setEditorTab('live')}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${editorTab === 'live' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${editorTab === 'live' ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400' : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'}`}
               >
                 <Mic className="w-4 h-4" /> Live Lecture AI
               </button>
@@ -622,29 +622,29 @@ ${transcript}`
             <div className="p-6 space-y-4 overflow-y-auto flex-1">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Title</label>
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Title</label>
                   <input
                     type="text"
                     value={noteTitle}
                     onChange={(e) => setNoteTitle(e.target.value)}
                     placeholder="e.g., Intro to Databases"
-                    className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Date</label>
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Date</label>
                   <input
                     type="date"
                     value={noteDate}
                     onChange={(e) => setNoteDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500"
                   />
                 </div>
               </div>
 
               {editorTab === 'paste' ? (
                 <div className="flex-1 flex flex-col pt-2">
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                     Markdown Content
                   </label>
                   <textarea
@@ -652,15 +652,15 @@ ${transcript}`
                     onChange={(e) => setNoteContent(e.target.value)}
                     placeholder="Paste your lecture notes here, or use the Live Lecture AI tab to generate them automatically..."
                     rows={12}
-                    className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 font-mono resize-none flex-1"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 font-mono resize-none flex-1"
                   />
                 </div>
               ) : (
                 <div className="flex-1 flex flex-col pt-2 pb-4">
-                  <div className="bg-slate-900/80 border border-green-500/20 rounded-xl p-6 flex flex-col items-center justify-center text-center space-y-4">
+                  <div className="bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-green-500/20 rounded-xl p-6 flex flex-col items-center justify-center text-center space-y-4">
                     <button
                       onClick={toggleRecording}
-                      className={`relative flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300 shadow-xl ${listening ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)]' : 'bg-slate-800 hover:bg-slate-700 border border-white/10'}`}
+                      className={`relative flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300 shadow-xl ${listening ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)]' : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-700 border border-slate-200 dark:border-white/10'}`}
                     >
                       {listening ? (
                         <>
@@ -668,7 +668,7 @@ ${transcript}`
                           <MicOff className="w-8 h-8 text-white relative z-10" />
                         </>
                       ) : (
-                        <Mic className="w-8 h-8 text-slate-300" />
+                        <Mic className="w-8 h-8 text-slate-700 dark:text-slate-300" />
                       )}
                     </button>
 
@@ -691,17 +691,17 @@ ${transcript}`
                     )}
 
                     <div>
-                      <h4 className="text-lg font-medium text-slate-200">
+                      <h4 className="text-lg font-medium text-slate-800 dark:text-slate-200">
                         {listening ? 'Listening live...' : 'Start Live Transcription'}
                       </h4>
-                      <p className="text-sm text-slate-500 mt-1 max-w-sm mx-auto">
+                      <p className="text-sm text-slate-600 dark:text-slate-500 mt-1 max-w-sm mx-auto">
                         Hit record, place your laptop near the professor, and let the AI generate a perfect study guide.
                       </p>
                     </div>
 
                     {transcript && (
-                      <div className="w-full mt-4 bg-slate-950/50 border border-white/5 rounded-lg p-4 text-left max-h-40 overflow-y-auto">
-                        <p className="text-sm text-slate-300 leading-relaxed font-mono">
+                      <div className="w-full mt-4 bg-white dark:bg-slate-950/50 border border-slate-300 dark:border-white/5 rounded-lg p-4 text-left max-h-40 overflow-y-auto">
+                        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-mono">
                           {transcript}
                           {listening && <span className="inline-block w-1.5 h-3.5 bg-green-500 ml-1 animate-pulse"></span>}
                         </p>
@@ -712,13 +712,13 @@ ${transcript}`
               )}
             </div>
 
-            <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-slate-900/50 rounded-b-2xl">
+            <div className="px-6 py-4 border-t border-slate-200 dark:border-white/10 flex justify-between items-center bg-white dark:bg-slate-900/50 rounded-b-2xl">
               <div className="flex gap-3">
                 {editorTab === 'live' && (
                   <button
                     onClick={handleCopyForLLM}
                     disabled={!transcript}
-                    className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30 border border-indigo-500/30 transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-200 border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-400 dark:hover:bg-indigo-500/30 dark:border-indigo-500/30 border transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {copiedPrompt ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     {copiedPrompt ? 'Copied to Clipboard!' : 'Copy Prompt & Transcript for LLM'}
@@ -728,7 +728,7 @@ ${transcript}`
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowEditor(false)}
-                  className="px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                  className="px-4 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 transition-colors"
                 >
                   Cancel
                 </button>
@@ -748,23 +748,23 @@ ${transcript}`
       {/* Note Viewer Modal */}
       {viewingNoteId !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#0F172A] border border-white/10 rounded-2xl w-full max-w-3xl mx-4 max-h-[85vh] flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-              <h3 className="text-base font-semibold text-slate-50 truncate">{viewingNoteTitle}</h3>
+          <div className="bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-white/10 rounded-2xl w-full max-w-3xl mx-4 max-h-[85vh] flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
+              <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50 truncate">{viewingNoteTitle}</h3>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
                     const note = notes.find((n) => n.id === viewingNoteId)
                     if (note) handleDownloadNote(note)
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 hover:text-green-400 hover:bg-white/5 rounded-lg transition-all"
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-600 dark:text-slate-400 hover:text-green-400 hover:bg-slate-100 dark:bg-white/5 rounded-lg transition-all"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Download .md
                 </button>
                 <button
                   onClick={() => setViewingNoteId(null)}
-                  className="text-slate-500 hover:text-slate-300 transition-colors"
+                  className="text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -783,14 +783,14 @@ ${transcript}`
       {/* Resource Selection Modal */}
       {showResourceModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#0F172A] border border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-              <h3 className="text-lg font-semibold text-slate-50">
+          <div className="bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
                 Course Resources — {course.code}
               </h3>
               <button
                 onClick={() => setShowResourceModal(false)}
-                className="text-slate-500 hover:text-slate-300 transition-colors"
+                className="text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -804,7 +804,7 @@ ${transcript}`
               ) : resourceError ? (
                 <p className="text-sm text-rose-400">{resourceError}</p>
               ) : resources.length === 0 ? (
-                <p className="text-sm text-slate-500 text-center py-6">
+                <p className="text-sm text-slate-500 dark:text-slate-500 text-center py-6">
                   No files or pages found for this course.
                 </p>
               ) : (
@@ -823,7 +823,7 @@ ${transcript}`
                   <div className="flex items-center gap-3">
                     <button
                       onClick={selectedIds.size === resources.length ? clearSelection : selectAll}
-                      className="text-xs text-slate-400 hover:text-green-400 transition-colors flex items-center gap-1.5"
+                      className="text-xs text-slate-600 dark:text-slate-400 hover:text-green-400 transition-colors flex items-center gap-1.5"
                     >
                       {selectedIds.size === resources.length ? (
                         <CheckSquare className="w-3.5 h-3.5" />
@@ -840,14 +840,14 @@ ${transcript}`
                   {/* Files */}
                   {fileResources.length > 0 && (
                     <div>
-                      <p className="text-[11px] font-medium text-slate-500 uppercase tracking-wider mb-2">
+                      <p className="text-[11px] font-medium text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-2">
                         Files ({fileResources.length})
                       </p>
                       <div className="space-y-1">
                         {fileResources.map((r) => (
                           <label
                             key={r.id}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer group"
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:bg-white/5 cursor-pointer group"
                           >
                             <input
                               type="checkbox"
@@ -856,7 +856,7 @@ ${transcript}`
                               className="accent-green-500 rounded"
                             />
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm text-slate-300 truncate">{r.name}</p>
+                              <p className="text-sm text-slate-700 dark:text-slate-300 truncate">{r.name}</p>
                               {r.size && (
                                 <p className="text-[11px] text-slate-600">{formatBytes(r.size)}</p>
                               )}
@@ -870,14 +870,14 @@ ${transcript}`
                   {/* Pages */}
                   {pageResources.length > 0 && (
                     <div>
-                      <p className="text-[11px] font-medium text-slate-500 uppercase tracking-wider mb-2">
+                      <p className="text-[11px] font-medium text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-2">
                         Pages → Markdown ({pageResources.length})
                       </p>
                       <div className="space-y-1">
                         {pageResources.map((r) => (
                           <label
                             key={r.id}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer"
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:bg-white/5 cursor-pointer"
                           >
                             <input
                               type="checkbox"
@@ -885,7 +885,7 @@ ${transcript}`
                               onChange={() => toggleSelect(r.id)}
                               className="accent-green-500 rounded"
                             />
-                            <p className="text-sm text-slate-300 truncate flex-1">{r.name}</p>
+                            <p className="text-sm text-slate-700 dark:text-slate-300 truncate flex-1">{r.name}</p>
                           </label>
                         ))}
                       </div>
@@ -912,10 +912,10 @@ ${transcript}`
               )}
             </div>
 
-            <div className="px-6 py-4 border-t border-white/10 flex justify-end gap-3">
+            <div className="px-6 py-4 border-t border-slate-200 dark:border-white/10 flex justify-end gap-3">
               <button
                 onClick={() => setShowResourceModal(false)}
-                className="px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                className="px-4 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 transition-colors"
               >
                 Close
               </button>

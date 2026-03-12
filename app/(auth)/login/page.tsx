@@ -62,14 +62,14 @@ export default function LoginPage() {
             <BookOpen className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-slate-50">AI School OS</h1>
-            <p className="text-[11px] text-slate-500 -mt-0.5">Academic Command Center</p>
+            <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-50">AI School OS</h1>
+            <p className="text-[11px] text-slate-500 dark:text-slate-500 -mt-0.5">Academic Command Center</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-        <h2 className="text-lg font-semibold text-slate-100 mb-6">Sign in to your account</h2>
+      <div className="bg-white dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-white/10 rounded-2xl p-8">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-6">Sign in to your account</h2>
 
         {error && (
           <div className="flex items-start gap-3 p-3 mb-4 bg-rose-500/10 border border-rose-500/20 rounded-lg">
@@ -80,7 +80,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">Email</label>
+            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Email</label>
             <input
               type="email"
               value={email}
@@ -88,12 +88,12 @@ export default function LoginPage() {
               placeholder="you@university.edu"
               required
               autoComplete="email"
-              className="w-full px-4 py-2.5 bg-slate-800/80 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
+              className="w-full px-4 py-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">Password</label>
+            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Password</label>
             <input
               type="password"
               value={password}
@@ -101,7 +101,7 @@ export default function LoginPage() {
               placeholder="••••••••"
               required
               autoComplete="current-password"
-              className="w-full px-4 py-2.5 bg-slate-800/80 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
+              className="w-full px-4 py-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
             />
           </div>
 
@@ -117,10 +117,10 @@ export default function LoginPage() {
 
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/10"></div>
+            <div className="w-full border-t border-slate-200 dark:border-white/10"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-slate-900 text-slate-500">Or</span>
+            <span className="px-2 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-500">Or</span>
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export default function LoginPage() {
           Try Demo Account
         </button>
 
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-500">
           No account?{' '}
           <Link href="/signup" className="text-green-400 hover:text-green-300 transition-colors">
             Create one

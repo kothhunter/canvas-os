@@ -49,22 +49,22 @@ export default function SettingsPage() {
     <div className="p-8 lg:p-10 max-w-2xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3">
-          <SettingsIcon className="w-8 h-8 text-slate-500" />
+          <SettingsIcon className="w-8 h-8 text-slate-500 dark:text-slate-500" />
           <span className="bg-gradient-to-r from-slate-200 to-slate-400 bg-clip-text text-transparent">
             Settings
           </span>
         </h1>
-        <p className="text-slate-400 mt-1">Configure your Canvas API connection.</p>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">Configure your Canvas API connection.</p>
       </div>
 
       <div className="space-y-5">
         {/* Canvas URL */}
-        <div className="group bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-200">
-          <label className="block text-sm font-semibold text-slate-300 mb-1 flex items-center gap-2">
+        <div className="group bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10 p-6 hover:border-white/20 transition-all duration-200">
+          <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-2">
             <Globe className="w-4 h-4 text-sky-400" />
             Canvas URL
           </label>
-          <p className="text-xs text-slate-500 mb-3">
+          <p className="text-xs text-slate-500 dark:text-slate-500 mb-3">
             Your institution&apos;s Canvas URL (e.g., https://school.instructure.com)
           </p>
           <input
@@ -72,13 +72,13 @@ export default function SettingsPage() {
             value={canvasUrl}
             onChange={(e) => setCanvasUrl(e.target.value)}
             placeholder="https://canvas.instructure.com"
-            className="w-full px-4 py-2.5 bg-slate-800/80 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
+            className="w-full px-4 py-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
           />
         </div>
 
         {/* Canvas Token */}
-        <div className="group bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-200">
-          <label className="block text-sm font-semibold text-slate-300 mb-1 flex items-center gap-2">
+        <div className="group bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10 p-6 hover:border-white/20 transition-all duration-200">
+          <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-2">
             <Key className="w-4 h-4 text-amber-400" />
             Canvas API Token
             {hasToken && (
@@ -88,7 +88,7 @@ export default function SettingsPage() {
               </span>
             )}
           </label>
-          <p className="text-xs text-slate-500 mb-3">
+          <p className="text-xs text-slate-500 dark:text-slate-500 mb-3">
             Generate a personal access token from Canvas: Profile → Settings → New Access Token.{' '}
             {hasToken && 'Leave blank to keep the existing token.'}
           </p>
@@ -97,7 +97,7 @@ export default function SettingsPage() {
             value={token}
             onChange={(e) => setToken(e.target.value)}
             placeholder={hasToken ? 'Enter new token to replace existing...' : 'Enter your Canvas API token'}
-            className="w-full px-4 py-2.5 bg-slate-800/80 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
+            className="w-full px-4 py-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500/50 transition-all"
           />
         </div>
 

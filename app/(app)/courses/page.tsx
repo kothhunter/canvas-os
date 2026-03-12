@@ -34,7 +34,7 @@ export default function CoursesPage() {
             Courses
           </span>
         </h1>
-        <p className="text-slate-400 mt-1">Your enrolled courses from Canvas.</p>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">Your enrolled courses from Canvas.</p>
       </div>
 
       {loading ? (
@@ -44,8 +44,8 @@ export default function CoursesPage() {
       ) : courses.length === 0 ? (
         <div className="text-center py-20">
           <GraduationCap className="w-10 h-10 mx-auto mb-4 text-slate-600" />
-          <p className="text-slate-400 font-medium">No courses synced yet</p>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-slate-600 dark:text-slate-400 font-medium">No courses synced yet</p>
+          <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">
             Configure your Canvas token in{' '}
             <Link href="/settings" className="text-green-400 hover:underline">
               Settings
@@ -59,7 +59,7 @@ export default function CoursesPage() {
             <Link
               key={course.id}
               href={`/courses/${course.id}`}
-              className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-white/20 hover:bg-slate-800/50 transition-all duration-200 active:scale-[0.98] overflow-hidden cursor-pointer"
+              className="group relative bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10 p-6 hover:border-white/20 hover:bg-slate-800/50 transition-all duration-200 active:scale-[0.98] overflow-hidden cursor-pointer"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-green-500/5 to-emerald-500/5 pointer-events-none" />
 
@@ -73,12 +73,12 @@ export default function CoursesPage() {
               </div>
 
               <div className="relative">
-                <h3 className="font-semibold text-slate-200 group-hover:text-white transition-colors line-clamp-2">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-white transition-colors line-clamp-2">
                   {course.name}
                 </h3>
                 <p className="text-sm text-green-400 font-medium mt-1">{course.code}</p>
                 {course.instructor && (
-                  <p className="text-xs text-slate-500 mt-3 flex items-center gap-1.5">
+                  <p className="text-xs text-slate-500 dark:text-slate-500 mt-3 flex items-center gap-1.5">
                     <Users className="w-3 h-3" />
                     {course.instructor}
                   </p>

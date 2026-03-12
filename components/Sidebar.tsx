@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutDashboard, GraduationCap, Settings, RefreshCw, BookOpen, LogOut } from 'lucide-react'
+import { LayoutDashboard, GraduationCap, Settings, RefreshCw, BookOpen, LogOut, Sun, Moon } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
 import { createClient } from '@/lib/supabase/client'
 
 const navItems = [
@@ -17,12 +18,15 @@ export default function Sidebar() {
   const router = useRouter()
   const [lastSync, setLastSync] = useState<string | null>(null)
   const [syncing, setSyncing] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
+    setMounted(true)
     fetch('/api/sync/last')
       .then((r) => r.json())
       .then((d) => setLastSync(d.lastSync))
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   const handleSync = async () => {
@@ -55,7 +59,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-64 flex-shrink-0 h-screen flex flex-col bg-white/5 backdrop-blur-md border-r border-white/10">
+    <aside className="w-64 flex-shrink-0 h-screen flex flex-col bg-slate-100 dark:bg-white/5 backdrop-blur-md border-r border-slate-200 dark:border-white/10">
       {/* App title */}
       <div className="pt-8 pb-6 px-6">
         <div className="flex items-center gap-3">
@@ -63,8 +67,8 @@ export default function Sidebar() {
             <BookOpen className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-semibold tracking-tight text-slate-50">Canvas</h1>
-            <p className="text-[11px] text-slate-500 -mt-0.5">Dashboard</p>
+            <h1 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-50">Canvas</h1>
+            <p className="text-[11px] text-slate-500 dark:text-slate-500 -mt-0.5">Dashboard</p>
           </div>
         </div>
       </div>
@@ -78,11 +82,10 @@ export default function Sidebar() {
             <Link
               key={item.to}
               href={item.to}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive
-                  ? 'bg-white/10 text-slate-50'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
-              }`}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                  ? 'bg-slate-200 dark:bg-white/10 text-slate-900 dark:text-slate-50'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:bg-white/5'
+                }`}
             >
               <item.icon className="w-[18px] h-[18px]" />
               {item.label}
@@ -91,23 +94,33 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Sync status + sign out */}
-      <div className="p-4 border-t border-white/10 space-y-1">
+      {/* Sync status + sign out + theme */}
+      <div className="p-4 border-t border-slate-200 dark:border-white/10 space-y-1">
+        {mounted && (
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 mb-2"
+          >
+            {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+          </button>
+        )}
+
         <button
           onClick={handleSync}
           disabled={syncing}
-          className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-200 disabled:opacity-50"
+          className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-slate-500 hover:text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-white/5 transition-all duration-200 disabled:opacity-50"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
           <span>{syncing ? 'Syncing...' : `Last synced: ${formatSyncTime(lastSync)}`}</span>
           {!syncing && lastSync && (
-            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
           )}
         </button>
 
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-slate-600 hover:text-slate-400 hover:bg-white/5 transition-all duration-200"
+          className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Sign out</span>

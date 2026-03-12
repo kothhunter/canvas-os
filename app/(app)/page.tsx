@@ -311,7 +311,7 @@ ${transcript}`
             Hunter
           </span>
         </h1>
-        <p className="text-slate-400 mt-1">
+        <p className="text-slate-600 dark:text-slate-400 mt-1">
           {dueThisWeek.length > 0
             ? `You have ${dueThisWeek.length} assignment${dueThisWeek.length > 1 ? 's' : ''} due this week.`
             : loading
@@ -329,7 +329,7 @@ ${transcript}`
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6"
         >
           {[
-            { label: 'Total', value: assignments.length, color: 'text-slate-200', labelColor: 'text-slate-500' },
+            { label: 'Total', value: assignments.length, color: 'text-slate-800 dark:text-slate-200', labelColor: 'text-slate-500 dark:text-slate-500' },
             {
               label: 'Pending',
               value: assignments.filter(
@@ -358,7 +358,7 @@ ${transcript}`
               key={stat.label}
               className="h-full"
             >
-              <SpotlightCard className="p-4 h-full border border-white/10 hover:border-white/20 transition-all duration-200 bg-slate-900/50">
+              <SpotlightCard className="p-4 h-full border border-slate-200 dark:border-white/10 hover:border-white/20 transition-all duration-200 bg-white dark:bg-slate-900/50">
                 <p className={`text-[11px] font-medium ${stat.labelColor} uppercase tracking-wider`}>
                   {stat.label}
                 </p>
@@ -375,15 +375,15 @@ ${transcript}`
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/40 p-3 rounded-xl border border-white/10"
+          className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900/40 p-3 rounded-xl border border-slate-200 dark:border-white/10"
         >
           <div className="flex items-center gap-3 overflow-x-auto pb-1 sm:pb-0">
-            <Filter className="w-4 h-4 text-slate-500 ml-1 flex-shrink-0" />
+            <Filter className="w-4 h-4 text-slate-500 dark:text-slate-500 ml-1 flex-shrink-0" />
 
             <select
               value={courseFilter}
               onChange={(e) => setCourseFilter(e.target.value)}
-              className="bg-slate-800/80 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
+              className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
             >
               <option value="all">All Courses</option>
               {courseOptions.map((code) => (
@@ -394,7 +394,7 @@ ${transcript}`
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-              className="bg-slate-800/80 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
+              className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
             >
               {STATUS_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>Status: {opt.label}</option>
@@ -404,7 +404,7 @@ ${transcript}`
             <select
               value={dueFilter}
               onChange={(e) => setDueFilter(e.target.value as DueFilter)}
-              className="bg-slate-800/80 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
+              className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-green-500/50 cursor-pointer"
             >
               {DUE_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>Due: {opt.label}</option>
@@ -418,7 +418,7 @@ ${transcript}`
                   setCourseFilter('all')
                   setDueFilter('all')
                 }}
-                className="text-[11px] text-slate-500 hover:text-green-400 transition-colors whitespace-nowrap px-2"
+                className="text-[11px] text-slate-500 dark:text-slate-500 hover:text-green-400 transition-colors whitespace-nowrap px-2"
               >
                 Clear all
               </button>
@@ -426,7 +426,7 @@ ${transcript}`
           </div>
 
           <div className="flex items-center gap-3 pr-2">
-            <span className="text-[11px] text-slate-500 whitespace-nowrap">
+            <span className="text-[11px] text-slate-500 dark:text-slate-500 whitespace-nowrap">
               Showing {filteredAndSorted.length} assignments
             </span>
             <button
@@ -445,22 +445,22 @@ ${transcript}`
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5, type: 'spring' }}
-        className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/10 flex flex-col flex-1 min-h-0"
+        className="bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-white/10 flex flex-col flex-1 min-h-0"
       >
-        <div className="px-6 py-4 border-b border-white/5 flex-shrink-0">
-          <h2 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+        <div className="px-6 py-4 border-b border-slate-200 dark:border-white/5 flex-shrink-0">
+          <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             Assignments
           </h2>
         </div>
 
         {loading ? (
-          <div className="px-6 py-16 text-center text-slate-500">
+          <div className="px-6 py-16 text-center text-slate-500 dark:text-slate-500">
             <div className="w-6 h-6 border-2 border-slate-700 border-t-green-500 rounded-full animate-spin mx-auto mb-3" />
             Loading assignments...
           </div>
         ) : assignments.length === 0 ? (
-          <div className="px-6 py-16 text-center text-slate-500">
+          <div className="px-6 py-16 text-center text-slate-500 dark:text-slate-500">
             <Calendar className="w-8 h-8 mx-auto mb-3 opacity-40" />
             <p className="font-medium">No assignments yet</p>
             <p className="text-sm mt-1">
@@ -472,16 +472,16 @@ ${transcript}`
             </p>
           </div>
         ) : filteredAndSorted.length === 0 ? (
-          <div className="px-6 py-12 text-center text-slate-500">
+          <div className="px-6 py-12 text-center text-slate-500 dark:text-slate-500">
             <Filter className="w-6 h-6 mx-auto mb-2 opacity-40" />
             <p className="text-sm">No assignments match your filters.</p>
           </div>
         ) : (
           <div className="relative flex-1">
-            <div className="absolute inset-0 overflow-y-auto border-t border-white/5">
+            <div className="absolute inset-0 overflow-y-auto border-t border-slate-200 dark:border-white/5">
               <table className="w-full table-fixed">
-                <thead className="sticky top-0 z-10 bg-slate-900 border-b border-white/5 shadow-sm">
-                  <tr className="text-xs text-slate-500 uppercase tracking-wider">
+                <thead className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/5 shadow-sm">
+                  <tr className="text-xs text-slate-500 dark:text-slate-500 uppercase tracking-wider">
                     <th className="w-[40%] px-6 py-3 text-left font-medium">Assignment</th>
                     <th className="w-[15%] px-4 py-3 text-left font-medium">Course</th>
                     <th className="w-[14%] px-4 py-3 text-left font-medium">Due</th>
@@ -506,7 +506,7 @@ ${transcript}`
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, scale: 0.95 }}
                           transition={{ delay: i * 0.03, duration: 0.2 }}
-                          className="hover:bg-white/5 transition-colors duration-200 relative group"
+                          className="hover:bg-slate-100 dark:bg-white/5 transition-colors duration-200 relative group"
                         >
                           <td className="px-6 py-3.5">
                             <div className="flex items-center gap-2">
@@ -517,7 +517,7 @@ ${transcript}`
                                 </span>
                               )}
                               <span
-                                className="text-sm font-medium text-slate-200 block truncate"
+                                className="text-sm font-medium text-slate-800 dark:text-slate-200 block truncate"
                                 title={a.name}
                               >
                                 {a.name}
@@ -525,14 +525,14 @@ ${transcript}`
                             </div>
                           </td>
                           <td className="px-4 py-3.5">
-                            <span className="text-xs font-medium px-2 py-1 rounded-md bg-white/5 text-slate-400 max-w-[140px] truncate inline-block align-bottom">
+                            <span className="text-xs font-medium px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 max-w-[140px] truncate inline-block align-bottom">
                               {a.course_code}
                             </span>
                           </td>
-                          <td className="px-4 py-3.5 text-sm text-slate-400 whitespace-nowrap">
+                          <td className="px-4 py-3.5 text-sm text-slate-600 dark:text-slate-400 whitespace-nowrap">
                             {formatDueDate(a.due_at)}
                           </td>
-                          <td className="px-4 py-3.5 text-sm text-slate-400">
+                          <td className="px-4 py-3.5 text-sm text-slate-600 dark:text-slate-400">
                             {a.points_possible ?? '—'}
                           </td>
                           <td className="px-4 py-3.5">
@@ -549,7 +549,7 @@ ${transcript}`
                                 href={a.html_url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-slate-500 hover:text-green-400 transition-colors"
+                                className="text-slate-500 dark:text-slate-500 hover:text-green-400 transition-colors"
                               >
                                 <ExternalLink className="w-4 h-4" />
                               </a>
@@ -569,27 +569,27 @@ ${transcript}`
       {/* Note Editor Modal */}
       {showNoteEditor && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#0F172A] border border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-              <h3 className="text-lg font-semibold text-slate-50">New Lecture Note</h3>
+          <div className="bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">New Lecture Note</h3>
               <button
                 onClick={() => setShowNoteEditor(false)}
-                className="text-slate-500 hover:text-slate-300 transition-colors"
+                className="text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex border-b border-white/10 px-6 pt-2">
+            <div className="flex border-b border-slate-200 dark:border-white/10 px-6 pt-2">
               <button
                 onClick={() => setEditorTab('paste')}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${editorTab === 'paste' ? 'border-green-500 text-green-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${editorTab === 'paste' ? 'border-green-500 text-green-600 dark:text-green-400' : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'}`}
               >
                 Markdown Editor
               </button>
               <button
                 onClick={() => setEditorTab('live')}
-                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${editorTab === 'live' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${editorTab === 'live' ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400' : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'}`}
               >
                 <Mic className="w-4 h-4" /> Live Lecture AI
               </button>
@@ -598,11 +598,11 @@ ${transcript}`
             <div className="p-6 space-y-4 overflow-y-auto flex-1">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Course</label>
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Course</label>
                   <select
                     value={noteCourseId}
                     onChange={(e) => setNoteCourseId(e.target.value ? Number(e.target.value) : '')}
-                    className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500 cursor-pointer"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500 cursor-pointer"
                   >
                     <option value="" disabled>Select course</option>
                     {activeCourses.map((c) => (
@@ -611,29 +611,29 @@ ${transcript}`
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Title</label>
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Title</label>
                   <input
                     type="text"
                     value={noteTitle}
                     onChange={(e) => setNoteTitle(e.target.value)}
                     placeholder="e.g., Intro to Databases"
-                    className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Date</label>
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Date</label>
                   <input
                     type="date"
                     value={noteDate}
                     onChange={(e) => setNoteDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-green-500"
                   />
                 </div>
               </div>
 
               {editorTab === 'paste' ? (
                 <div className="flex-1 flex flex-col pt-2">
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                     Markdown Content
                   </label>
                   <textarea
@@ -641,15 +641,15 @@ ${transcript}`
                     onChange={(e) => setNoteContent(e.target.value)}
                     placeholder="Paste your lecture notes here, or use the Live Lecture AI tab to generate them automatically..."
                     rows={12}
-                    className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 font-mono resize-none flex-1"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-green-500 font-mono resize-none flex-1"
                   />
                 </div>
               ) : (
                 <div className="flex-1 flex flex-col pt-2 pb-4">
-                  <div className="bg-slate-900/80 border border-green-500/20 rounded-xl p-6 flex flex-col items-center justify-center text-center space-y-4">
+                  <div className="bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-green-500/20 rounded-xl p-6 flex flex-col items-center justify-center text-center space-y-4">
                     <button
                       onClick={toggleRecording}
-                      className={`relative flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300 shadow-xl ${listening ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)]' : 'bg-slate-800 hover:bg-slate-700 border border-white/10'}`}
+                      className={`relative flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300 shadow-xl ${listening ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)]' : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-700 border border-slate-200 dark:border-white/10'}`}
                     >
                       {listening ? (
                         <>
@@ -657,7 +657,7 @@ ${transcript}`
                           <MicOff className="w-8 h-8 text-white relative z-10" />
                         </>
                       ) : (
-                        <Mic className="w-8 h-8 text-slate-300" />
+                        <Mic className="w-8 h-8 text-slate-700 dark:text-slate-300" />
                       )}
                     </button>
 
@@ -680,17 +680,17 @@ ${transcript}`
                     )}
 
                     <div>
-                      <h4 className="text-lg font-medium text-slate-200">
+                      <h4 className="text-lg font-medium text-slate-800 dark:text-slate-200">
                         {listening ? 'Listening live...' : 'Start Live Transcription'}
                       </h4>
-                      <p className="text-sm text-slate-500 mt-1 max-w-sm mx-auto">
+                      <p className="text-sm text-slate-600 dark:text-slate-500 mt-1 max-w-sm mx-auto">
                         Hit record, place your laptop near the professor, and let the AI generate a perfect study guide.
                       </p>
                     </div>
 
                     {transcript && (
-                      <div className="w-full mt-4 bg-slate-950/50 border border-white/5 rounded-lg p-4 text-left max-h-40 overflow-y-auto">
-                        <p className="text-sm text-slate-300 leading-relaxed font-mono">
+                      <div className="w-full mt-4 bg-white dark:bg-slate-950/50 border border-slate-300 dark:border-white/5 rounded-lg p-4 text-left max-h-40 overflow-y-auto">
+                        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-mono">
                           {transcript}
                           {listening && <span className="inline-block w-1.5 h-3.5 bg-green-500 ml-1 animate-pulse"></span>}
                         </p>
@@ -701,13 +701,13 @@ ${transcript}`
               )}
             </div>
 
-            <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-slate-900/50 rounded-b-2xl">
+            <div className="px-6 py-4 border-t border-slate-200 dark:border-white/10 flex justify-between items-center bg-white dark:bg-slate-900/50 rounded-b-2xl">
               <div className="flex gap-3">
                 {editorTab === 'live' && (
                   <button
                     onClick={handleCopyForLLM}
                     disabled={!transcript}
-                    className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30 border border-indigo-500/30 transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-200 border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-400 dark:hover:bg-indigo-500/30 dark:border-indigo-500/30 border transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {copiedPrompt ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     {copiedPrompt ? 'Copied to Clipboard!' : 'Copy Prompt & Transcript for LLM'}
@@ -717,7 +717,7 @@ ${transcript}`
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowNoteEditor(false)}
-                  className="px-4 py-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                  className="px-4 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 transition-colors"
                 >
                   Cancel
                 </button>
